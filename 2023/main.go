@@ -1,27 +1,24 @@
 package main
 
 import (
-	_1201 "2023/1201"
+	_1202 "2023/1202"
 	"bufio"
 	"fmt"
 	"os"
 )
 
 func main() {
-	filePath := "./inputs/01.txt"
+	filePath := "./inputs/02.txt"
 	input, err := readInputFile(filePath)
 	if err != nil {
 		fmt.Printf("Error occured: %s\n", err.Error())
 		return
 	}
 
-	result, err := _1201.Run01Two(input)
-	if err != nil {
-		fmt.Printf("Error occured: %s\n", err.Error())
-		return
-	}
+	result := _1202.Run02(input)
 
 	fmt.Printf("Result:\n%d\n", result)
+
 }
 
 func readInputFile(path string) ([]string, error) {
