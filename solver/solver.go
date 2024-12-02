@@ -1,13 +1,14 @@
 package solver
 
 import (
+	"fmt"
 	"io"
 	"os"
 )
 
 type Solver interface {
-	SetInput(interface{}) error
-	Solve(int) (interface{}, error)
+	SetInput(i interface{}) error
+	Solve(n int) (interface{}, error)
 }
 
 func readFromInputFile(filename string) (string, error) {
@@ -34,4 +35,19 @@ func readFromInputFile(filename string) (string, error) {
 		input += string(b[:n])
 	}
 	return input, nil
+}
+
+type Input struct {
+	input string
+}
+
+func NewInput(s interface{}) (*Input, error) {
+	i := &Input{}
+	switch v := s.(type) {
+	default:
+		return nil, fmt.Errorf("invalid input: %v, expected string", s)
+	case string:
+		i.input = v
+	}
+	return i, nil
 }
